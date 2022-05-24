@@ -38,7 +38,7 @@ export const getUsers = async (req: Request, res: Response) => {
             result: users
         })
 
-    } catch (error) {
+    } catch (error) { 
         console.log("Error getUsers: ", error)
         res.status(400).json({
             ok: false,

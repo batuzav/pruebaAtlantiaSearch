@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 import test1Routes from "./routes/test1.routes"
 import test2Routes from "./routes/test2.routes"
+import { connect } from "mongoose";
 
 
 class Server {
@@ -16,8 +17,13 @@ class Server {
         this.app = express()
         this.port = process.env.PORT ?? "8000"
 
+        this.database()
         this.middlewares()
         this.routes()
+    }
+
+    async database() {
+        await connect(process.env.DB ?? '');
     }
 
     middlewares() {
